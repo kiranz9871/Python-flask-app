@@ -1,0 +1,31 @@
+replicaCount: 2
+
+image:
+  repository: kiran9871/flask-app
+  pullPolicy: IfNotPresent
+  tag: "v2"
+
+service:
+  type: NodePort
+  port: 5000
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+resources: {}

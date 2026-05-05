@@ -1,0 +1,4 @@
+#flask framework --> required to run the app
+gunicorn
+flask
+prometheus-client
