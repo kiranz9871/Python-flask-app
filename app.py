@@ -14,8 +14,7 @@ REQUEST_COUNT = Counter('app_requests_total', 'Total requests')
 @app.route("/")
 def home():
     REQUEST_COUNT.inc()
-    return "hello from flask app, your app is working fine, happy coding! 🚀"
-    return "this is very simple flask app, i love learning new things, flask is so easy to use, i am enjoying it"
+    return "hello from flask app, your app is working fine, happy coding! 🚀,this is very simple flask app, i love learning new things, flask is so easy to use, i am enjoying it"
 
 # New Health Endpoint
 @app.route("/health")
