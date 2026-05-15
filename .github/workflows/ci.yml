@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,4 +28,18 @@ jobs:
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/flask-app:${{ github.sha }}
 
-      
+    - name: Update Helm Chart Image Tag
+      run: |
+        sed -i "s/tag:.*/tag: ${GITHUB_SHA}/" flask-chart/values.yaml
+
+    - name: Commit Updated Helm Values
+      run: |
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "github-actions"
+
+        git add flask-chart/values.yaml
+        git commit -m "Updated image tag to ${GITHUB_SHA}" || echo "No changes"
+
+    - name: Push Updated Helm Values
+      run: |
+        git push
