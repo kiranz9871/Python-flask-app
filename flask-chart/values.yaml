@@ -4,11 +4,11 @@ image:
 <<<<<<< HEAD
   repository: flask-app
   pullPolicy: IfNotPresent
-  tag: "v1"
+  tag: "7f8b666abc1b6e243a741b9c8d38b8488e2a8f43"
 =======
   repository: kiran9871/flask-app
   pullPolicy: IfNotPresent
-  tag: "98a6809a3fbb72dba0c709b07b2d8ae7ee6883ee"
+  tag: "7f8b666abc1b6e243a741b9c8d38b8488e2a8f43"
 >>>>>>> 80bf05c2a2b7861fba61d498a2bea9e51e683779
 
 service:
