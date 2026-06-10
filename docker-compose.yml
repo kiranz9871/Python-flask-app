@@ -1,0 +1,32 @@
+services:
+  floci:
+    image: floci/floci:latest
+    #build:
+      #context: .
+      #dockerfile: docker/Dockerfile
+    tty: true
+    ports:
+      - "4566:4566"
+      - "6379-6399:6379-6399"
+      - "7001-7099:7001-7099"
+      - "9200-9299:9200-9299"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+    environment:
+      FLOCI_SERVICES_DOCKER_NETWORK: floci_default
+      FLOCI_SERVICES_RDS_PROXY_BASE_PORT: "7001"
+      # FLOCI_STORAGE_HOST_PERSISTENT_PATH is no longer needed.
+      # Floci now uses named Docker volumes by default.
+      # If you were using this env var for persistence, migrate: docker volume ls -f label=floci=true
+      FLOCI_HOSTNAME: floci
+      FLOCI_BASE_URL: http://floci:4566
+      FLOCI_SERVICES_LAMBDA_HOT_RELOAD_ENABLED: "true"
+    networks:
+      floci_default:
+        aliases:
+          - localhost.floci.io
+
+networks:
+  floci_default:
+    name: floci_default
