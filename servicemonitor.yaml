@@ -2,12 +2,18 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: flask-monitor
-  labels:
-    release: monitoring
+  namespace: monitoring
+
 spec:
   selector:
     matchLabels:
+      app.kubernetes.io/instance: flask-release
       app.kubernetes.io/name: flask-chart
+
+  namespaceSelector:
+    matchNames:
+      - default
+
   endpoints:
     - port: http
       path: /metrics

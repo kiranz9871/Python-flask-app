@@ -1,15 +1,9 @@
 replicaCount: 2
 
 image:
-<<<<<<< HEAD
-  repository: flask-app
-  pullPolicy: IfNotPresent
-  tag: "7f8b666abc1b6e243a741b9c8d38b8488e2a8f43"
-=======
   repository: kiran9871/flask-app
   pullPolicy: IfNotPresent
   tag: "7f8b666abc1b6e243a741b9c8d38b8488e2a8f43"
->>>>>>> 80bf05c2a2b7861fba61d498a2bea9e51e683779
 
 service:
   type: NodePort
@@ -26,12 +20,12 @@ autoscaling:
 
 livenessProbe:
   httpGet:
-    path: /
+    path: /health
     port: http
 
 readinessProbe:
   httpGet:
-    path: /
+    path: /health
     port: http
 
 resources: {}
