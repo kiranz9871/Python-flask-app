@@ -14,7 +14,7 @@ REQUEST_COUNT = Counter('app_requests_total', 'Total requests')
 @app.route("/")
 def home():
     REQUEST_COUNT.inc()
-    return "Hi Developers this one for you, i like DevOps" 
+    return "Hi Argo CD" 
 # New Health Endpoint
 @app.route("/health")
 def health():
