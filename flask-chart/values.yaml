@@ -4,9 +4,9 @@ image:
   repository: kiran9871/flask-app
   pullPolicy: IfNotPresent
 <<<<<<< HEAD
-  tag: "53a5a5247ebd33e430add9b439693491a891e0a6"
+  tag: "702688b08538cbf7fb6b10df91352f9202ed0f79"
 =======
-  tag: "53a5a5247ebd33e430add9b439693491a891e0a6"
+  tag: "702688b08538cbf7fb6b10df91352f9202ed0f79"
 >>>>>>> 06da915 (deployement scaled)
 
 service:
