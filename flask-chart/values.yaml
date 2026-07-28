@@ -3,7 +3,7 @@ replicaCount: 5
 image:
   repository: kiran9871/flask-app
   pullPolicy: IfNotPresent
-  tag: "de3da8fcc099b3cfa5eda00e626f5530df8edc67"
+  tag: "baaa5168334e9c9f1f13c1e6ed9290b79fd4ce0f"
 
 
 service:
