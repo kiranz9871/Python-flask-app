@@ -1,4 +1,5 @@
 # import flask framework --> used to create a web application
+import os
 from flask import Flask
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 import time
@@ -6,6 +7,11 @@ import random
 
 # __name__ helps Flask determine the root path of the application, which is important for locating resources and templates
 app = Flask(__name__)
+
+# Read values from ConfigMap
+APP_NAME = os.getenv("APP_NAME", "Default Flask App")
+ENV = os.getenv("ENV", "development")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 
 # Metric
 REQUEST_COUNT = Counter('app_requests_total', 'Total requests')

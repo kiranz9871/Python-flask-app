@@ -5,9 +5,15 @@ image:
   pullPolicy: IfNotPresent
   tag: "0ecf310976f1282f4cc1bc33e189a781bbe2ad17"
 
+
 service:
   type: NodePort
   port: 5000
+
+config:
+  appName: "Production Flask App"
+  environment: "production"
+  logLevel: "INFO"
 
 serviceAccount:
   create: false
