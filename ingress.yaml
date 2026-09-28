@@ -2,15 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: flask-ingress
+  namespace: default
 spec:
+  ingressClassName: nginx
   rules:
-  - host: flask.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: flask-release-flask-chart
-            port:
-              number: 5000
+    - host: flask.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flask-app-flask-chart
+                port:
+                  number: 5000

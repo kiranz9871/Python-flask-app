@@ -3,11 +3,13 @@ kind: ServiceMonitor
 metadata:
   name: flask-monitor
   namespace: monitoring
+  labels:
+    release: monitoring
 
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/instance: flask-release
+      app.kubernetes.io/instance: flask-app
       app.kubernetes.io/name: flask-chart
 
   namespaceSelector:
