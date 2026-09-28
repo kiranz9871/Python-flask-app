@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 import time
-import random 
+import random
 
 # __name__ helps Flask determine the root path of the application, which is important for locating resources and templates
 app = Flask(__name__)
@@ -20,12 +20,19 @@ REQUEST_COUNT = Counter('app_requests_total', 'Total requests')
 @app.route("/")
 def home():
     REQUEST_COUNT.inc()
-    return "Hi Argo CD" 
+    return "Hi Argo CD ,i like to learn"
 
-# New Health Endpoint
-@app.route("/health")
-def health():
-    return {"status": "healthy"}, 200
+# Liveness endpoint
+# Kubernetes uses this to determine whether the application process is alive.
+@app.route("/live")
+def live():
+    return {"status": "alive"}, 200
+
+# Readiness endpoint
+# Kubernetes uses this to determine whether the application can receive traffic.
+@app.route("/ready")
+def ready():
+    return {"status": "ready"}, 200
 
 # Metrics endpoint
 @app.route("/metrics")
@@ -55,4 +62,4 @@ def error():
     # host="0.0.0.0" → allows external access (Docker/K8s REQUIRED)
     # port=5000 → app runs on port 5000
 if __name__ == "__main__":
-     app.run(host="0.0.0.0", port=5000) 
+     app.run(host="0.0.0.0", port=5000)
