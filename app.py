@@ -28,6 +28,10 @@ def home():
 def live():
     return {"status": "alive"}, 200
 
+@app.route("/health")
+def health():
+    return {"status": "healthy"}, 200
+
 # Readiness endpoint
 # Kubernetes uses this to determine whether the application can receive traffic.
 @app.route("/ready")
